@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>MizmaarDaood - Belajar Al-Qur'an Online</title>
+    
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'emerald-dark': '#047857',
+                        'emerald-light': '#10b981',
+                        'gold': '#fbbf24',
+                        'gold-dark': '#d97706',
+                        'navy': '#1e3a8a',
+                        'islamic-green': '#166534',
+                    },
+                    fontFamily: {
+                        'arabic': ['"Noto Naskh Arabic"', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-gradient-to-br from-emerald-50 via-white to-blue-50">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 md:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-quran text-2xl text-emerald-dark"></i>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-emerald-dark to-gold bg-clip-text text-transparent">MizmaarDaood</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-emerald-dark transition">Beranda</a>
+                    <a href="#courses" class="nav-link text-gray-700 hover:text-emerald-dark transition">Kursus</a>
+                    <a href="#participants" class="nav-link text-gray-700 hover:text-emerald-dark transition">Peserta</a>
+                    <a href="#ranking" class="nav-link text-gray-700 hover:text-emerald-dark transition">Ranking</a>
+                    <a href="#admin" class="nav-link text-gray-700 hover:text-emerald-dark transition">Admin</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="loginBtn" class="bg-gradient-to-r from-emerald-dark to-emerald-light text-white px-4 py-2 rounded-lg hover:shadow-lg transition">
+                        <i class="fas fa-user mr-2"></i>Login Demo
+                    </button>
+                    <button id="mobileMenuBtn" class="md:hidden text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden bg-gradient-to-br from-emerald-900 via-emerald-800 to-blue-900 text-white py-20 md:py-28">
+        <div class="absolute inset-0 opacity-10">
+            <i class="fas fa-quran text-9xl absolute top-20 left-10"></i>
+            <i class="fas fa-star text-8xl absolute bottom-20 right-10"></i>
+        </div>
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="text-center">
+                <h1 class="font-arabic text-5xl md:text-7xl mb-4">بسم الله الرحمن الرحيم</h1>
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">Belajar Al-Qur'an <span class="text-gold">Mudah & Menyenangkan</span></h2>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Bersama MizmaarDaood, tingkatkan pemahaman dan hafalan Al-Qur'an dengan metode modern berbasis pencapaian</p>
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <button class="bg-gold text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gold-dark transition transform hover:scale-105">
+                        <i class="fas fa-play mr-2"></i>Mulai Belajar Gratis
+                    </button>
+                    <button class="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-emerald-dark transition">
+                        <i class="fas fa-info-circle mr-2"></i>Lihat Kurikulum
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistik -->
+    <section class="py-12 bg-white shadow-md">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-xl hover:shadow-lg transition">
+                    <i class="fas fa-users text-4xl text-emerald-dark mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-800" id="statPeserta">0</div>
+                    <p class="text-gray-600">Total Peserta</p>
+                </div>
+                <div class="text-center p-6 rounded-xl hover:shadow-lg transition">
+                    <i class="fas fa-book text-4xl text-emerald-dark mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-800" id="statMateri">0</div>
+                    <p class="text-gray-600">Materi Pembelajaran</p>
+                </div>
+                <div class="text-center p-6 rounded-xl hover:shadow-lg transition">
+                    <i class="fas fa-trophy text-4xl text-emerald-dark mb-3"></i>
+                    <div class="text-3xl font-bold text-gray-800" id="statPencapaian">0</div>
+                    <p class="text-gray-600">Total Pencapaian</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daftar Kursus -->
+    <section id="courses" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Materi Pembelajaran</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kurikulum lengkap untuk mempelajari Al-Qur'an dari dasar hingga mahir</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1">
+                    <div class="bg-gradient-to-r from-emerald-500 to-emerald-700 p-6 text-white">
+                        <i class="fas fa-kiwi-bird text-4xl mb-3"></i>
+                        <h3 class="text-2xl font-bold">Tajwid Dasar</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Pelajari hukum bacaan Al-Qur'an dengan mudah, lengkap dengan contoh dan latihan</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-emerald-dark font-bold">10 Modul</span>
+                            <button class="text-emerald-dark hover:text-emerald-light">Detail <i class="fas fa-arrow-right ml-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1">
+                    <div class="bg-gradient-to-r from-gold to-gold-dark p-6 text-white">
+                        <i class="fas fa-mosque text-4xl mb-3"></i>
+                        <h3 class="text-2xl font-bold">Tahsin Al-Qur'an</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Perbaiki bacaan Al-Qur'an dengan metode praktis dan bimbingan langsung</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-emerald-dark font-bold">15 Modul</span>
+                            <button class="text-emerald-dark hover:text-emerald-light">Detail <i class="fas fa-arrow-right ml-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1">
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-white">
+                        <i class="fas fa-star-and-crescent text-4xl mb-3"></i>
+                        <h3 class="text-2xl font-bold">Hafalan Juz 30</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Program menghafal Juz Amma dengan teknik murojaah dan setoran hafalan</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-emerald-dark font-bold">37 Surah</span>
+                            <button class="text-emerald-dark hover:text-emerald-light">Detail <i class="fas fa-arrow-right ml-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daftar Peserta -->
+    <section id="participants" class="py-16 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Daftar Peserta Aktif</h2>
+                <p class="text-gray-600">Bergabunglah bersama ribuan peserta lainnya dalam mempelajari Al-Qur'an</p>
+            </div>
+            
+            <!-- Search & Filter -->
+            <div class="flex flex-col md:flex-row justify-between gap-4 mb-8">
+                <div class="relative flex-1">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    <input type="text" id="searchPeserta" placeholder="Cari nama peserta..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-dark">
+                </div>
+                <select id="filterLevel" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-dark">
+                    <option value="all">Semua Level</option>
+                    <option value="Pemula">Pemula</option>
+                    <option value="Lanjutan">Lanjutan</option>
+                    <option value="Mahir">Mahir</option>
+                </select>
+            </div>
+            
+            <!-- Participants Grid -->
+            <div id="participantsGrid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Dynamic content via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Ranking Section -->
+    <section id="ranking" class="py-16 bg-gradient-to-r from-emerald-50 to-blue-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">🏆 Top 5 Pencapaian Tertinggi</h2>
+                <p class="text-gray-600">Peserta dengan nilai dan pencapaian terbaik bulan ini</p>
+            </div>
+            <div id="rankingList" class="max-w-3xl mx-auto">
+                <!-- Dynamic ranking content -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Apa Kata Mereka?</h2>
+                <p class="text-gray-600">Testimoni dari peserta yang telah belajar bersama MizmaarDaood</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-emerald-500 to-emerald-700 rounded-full flex items-center justify-center text-white font-bold">A</div>
+                        <div class="ml-3">
+                            <h4 class="font-bold">Aisyah Putri</h4>
+                            <div class="text-gold-dark">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Metode belajarnya sangat menyenangkan! Saya jadi lebih semangat belajar Tajwid."</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-gold to-gold-dark rounded-full flex items-center justify-center text-white font-bold">M</div>
+                        <div class="ml-3">
+                            <h4 class="font-bold">Muhammad Rizki</h4>
+                            <div class="text-gold-dark">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Alhamdulillah, setelah 3 bulan belajar, bacaan Al-Qur'an saya semakin lancar."</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center text-white font-bold">F</div>
+                        <div class="ml-3">
+                            <h4 class="font-bold">Fatimah Zahra</h4>
+                            <div class="text-gold-dark">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Program hafalan Juz 30 sangat terstruktur, target hafalan saya tercapai!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 overflow-y-auto">
+        <div class="min-h-screen flex items-center justify-center p-4">
+            <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
+                    <h3 class="text-2xl font-bold text-emerald-dark">Panel Admin MizmaarDaood</h3>
+                    <button onclick="closeAdminModal()" class="text-2xl">&times;</button>
+                </div>
+                <div class="p-6">
+                    <div class="mb-6">
+                        <h4 class="font-bold mb-3">Tambah Peserta Baru</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <input type="text" id="newName" placeholder="Nama Lengkap" class="border p-2 rounded">
+                            <select id="newLevel" class="border p-2 rounded">
+                                <option value="Pemula">Pemula</option>
+                                <option value="Lanjutan">Lanjutan</option>
+                                <option value="Mahir">Mahir</option>
+                            </select>
+                            <button onclick="addParticipant()" class="bg-emerald-dark text-white px-4 py-2 rounded hover:bg-emerald-700">Tambah Peserta</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-bold mb-3">Tambah Evaluasi untuk Peserta</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                            <select id="evalParticipant" class="border p-2 rounded"></select>
+                            <input type="text" id="evalMateri" placeholder="Nama Materi" class="border p-2 rounded">
+                            <input type="number" id="evalNilai" placeholder="Nilai (0-100)" class="border p-2 rounded">
+                            <button onclick="addEvaluation()" class="bg-gold text-gray-900 px-4 py-2 rounded hover:bg-gold-dark">Tambah Nilai</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold mb-3">Daftar Semua Peserta</h4>
+                        <div id="adminParticipantList" class="space-y-2 max-h-96 overflow-y-auto"></div>
+                    </div>
+                </div>
+                <div class="border-t p-4 text-center text-sm text-gray-500">
+                    Login Demo: admin@mizmaardaood.com / quran123
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-quran text-2xl text-gold"></i>
+                        <span class="text-xl font-bold">MizmaarDaood</span>
+                    </div>
+                    <p class="text-gray-400">Platform pembelajaran Al-Qur'an modern untuk semua usia</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-gold transition">Beranda</a></li>
+                        <li><a href="#courses" class="hover:text-gold transition">Kursus</a></li>
+                        <li><a href="#participants" class="hover:text-gold transition">Peserta</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Kontak</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i> info@mizmaardaood.com</li>
+                        <li><i class="fas fa-phone mr-2"></i> +62 812 3456 7890</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-gold transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-gold transition"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-2xl hover:text-gold transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-gold transition"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 MizmaarDaood - Belajar Al-Qur'an dengan Cinta</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
